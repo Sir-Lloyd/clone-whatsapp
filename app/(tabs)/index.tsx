@@ -21,7 +21,7 @@ const Chats = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   return (
-    <ScrollView className="bg-[#0c131b] pt-6 px-3 gap-1">
+    <ScrollView className="bg-[#0c131b] pt-6 px-3 gap-1" bounces>
       {/* header */}
       <View className="flex flex-row items-center justify-between gap-2">
         <Text className="text-white text-2xl font-semibold flex-1">
