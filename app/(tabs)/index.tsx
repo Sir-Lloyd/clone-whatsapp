@@ -1,70 +1,76 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import ChatTile from "@/components/ChatTile";
+import { useState } from "react";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  CameraIcon,
+  EllipsisVerticalIcon,
+  MagnifyingGlassIcon,
+} from "react-native-heroicons/outline";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const filters: string[] = ["All", "Unread", "Favourites", "Groups"];
 
-export default function HomeScreen() {
+const messages: number[] = [1,2,3,4,5,6,7,8,9,10];
+
+const Chats = () => {
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <ScrollView className="bg-[#0c131b] pt-6 px-3 gap-1">
+      {/* header */}
+      <View className="flex flex-row items-center justify-between gap-2">
+        <Text className="text-white text-2xl font-semibold flex-1">
+          WhatsApp
+        </Text>
+        <TouchableOpacity onPress={() => {}}>
+          <CameraIcon color={"#fff"} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <EllipsisVerticalIcon color={"#fff"} />
+        </TouchableOpacity>
+      </View>
+      {/* search */}
+      <View className="rounded-full flex-row items-center gap-2 p-1 bg-[#242b31]">
+        <MagnifyingGlassIcon color={"#fff"} />
+        <TextInput
+          placeholder="Ask Meta AI or Search"
+          className="text-white"
+          placeholderTextColor={"#7e8689"}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+      {/* filters */}
+      <ScrollView className="gap-2" horizontal bounces>
+        {filters.map((filter: string, index: number) => (
+          <TouchableOpacity
+            onPress={() => {
+              setActiveFilter(filter);
+            }}
+            key={index}
+            className={`rounded-full px-3 py-1 ${
+              filter === activeFilter ? "bg-[#103629]" : "bg-[#242b31]"
+            }`}
+          >
+            <Text
+              className={`${
+                filter === activeFilter ? "text-[#31b66a]" : "text-[#7e8689]"
+              }`}
+            >
+              {filter}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+      {/* chats */}
+      {messages.map((_:number, index:number) => (
+        <ChatTile key={index} />
+      ))}
+    </ScrollView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+export default Chats;
