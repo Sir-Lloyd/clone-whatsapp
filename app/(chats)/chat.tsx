@@ -30,7 +30,7 @@ const ChatScreen = () => {
           <View className="h-10 w-10 bg-[#21c063] rounded-full"></View>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => router.navigate('/(chats)/profile')}
+          onPress={() => router.navigate('/profile')}
           className="flex-1 justify-center gap-1"
         >
           <Text className="text-white text-lg">John Doe</Text>
@@ -61,7 +61,7 @@ const ChatScreen = () => {
               placeholder="Message"
               placeholderTextColor={"#7e8689"}
               multiline
-              className="flex-1"
+              className="flex-1 text-white"
             />
             <TouchableOpacity onPress={() => {}}>
               <PaperClipIcon color={"#7e8689"} />

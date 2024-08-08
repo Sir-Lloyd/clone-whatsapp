@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 const HomeLayout = () => {
   return (
     <Stack
+    initialRouteName="(tabs)"
       screenOptions={{
         headerShown: false,
         contentStyle: {
@@ -11,7 +12,7 @@ const HomeLayout = () => {
       }}
     >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name='(chats)' />
+      <Stack.Screen name="(chats)" />
     </Stack>
   );
 };
