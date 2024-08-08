@@ -1,12 +1,17 @@
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { ChevronRightIcon } from "react-native-heroicons/outline";
 import { MegaphoneIcon } from "react-native-heroicons/solid";
+
+const community = require('../assets/img/community.jpeg')
+const group = require('../assets/img/group.jpeg')
 
 const CommunnityTile = () => {
   return (
     <View className="border-b-4 border-[#000] my-2 gap-2 py-2">
       <View className="items-center gap-2 flex-row border-b border-b-[#7e8689] pb-3">
-        <View className="w-12 h-12 rounded-lg bg-[#7e8689]"></View>
+        <View className="w-12 h-12 rounded-lg bg-[#7e8689]">
+        <Image source={community} resizeMode="cover" className="h-full w-full rounded-lg" />
+        </View>
         <Text className="text-white">Nerdvanna</Text>
       </View>
 
@@ -22,7 +27,9 @@ const CommunnityTile = () => {
       </View>
 
       <View className="flex-row items-center gap-2">
-        <View className="bg-[#d1c4fc] w-11 h-11 rounded-full p-2"></View>
+        <View className="bg-[#d1c4fc] w-11 h-11 rounded-full">
+        <Image source={group} resizeMode="cover" className="h-full w-full rounded-full" />
+        </View>
         <View className="flex-1 justify-center gap-1">
           <Text className="text-white">Inner Circle</Text>
           <Text className="text-[#7e8689]">Gojo: I call for a meeting</Text>

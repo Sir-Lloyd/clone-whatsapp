@@ -1,5 +1,7 @@
 import { Link, router } from "expo-router";
 import {
+  Image,
+  ImageBackground,
   ScrollView,
   Text,
   TextInput,
@@ -17,6 +19,9 @@ import {
 } from "react-native-heroicons/outline";
 import { MicrophoneIcon } from "react-native-heroicons/solid";
 
+const background = require("../../assets/img/background.png")
+const avatar = require('../../assets/img/avatar.png')
+
 const ChatScreen = () => {
   return (
     <View className="flex-1 bg-[#0c131b] pt-6 gap-1">
@@ -27,10 +32,12 @@ const ChatScreen = () => {
           className="flex-row items-center gap-1"
         >
           <ArrowLeftIcon color={"#fff"} size={18} />
-          <View className="h-10 w-10 bg-[#21c063] rounded-full"></View>
+          <View className="h-10 w-10 bg-[#21c063] rounded-full">
+            <Image source={avatar} resizeMode="cover" className="h-full w-full rounded-full" />
+          </View>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => router.navigate('/profile')}
+          onPress={() => router.navigate("/profile")}
           className="flex-1 justify-center gap-1"
         >
           <Text className="text-white text-lg">John Doe</Text>
@@ -49,6 +56,11 @@ const ChatScreen = () => {
       </View>
 
       <View className="flex-1">
+        <ImageBackground
+          source={background}
+          resizeMode="cover"
+          className="flex-1 justify-center"
+        >
         {/* chats */}
         <ScrollView bounces></ScrollView>
         {/* input */}
@@ -77,6 +89,7 @@ const ChatScreen = () => {
             <MicrophoneIcon color={"#000"} />
           </TouchableOpacity>
         </View>
+        </ImageBackground>
       </View>
     </View>
   );

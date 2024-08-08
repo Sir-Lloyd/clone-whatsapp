@@ -4,6 +4,7 @@ import {
   CameraIcon,
   EllipsisVerticalIcon,
 } from "react-native-heroicons/outline";
+import { UserGroupIcon } from "react-native-heroicons/solid";
 
 const communities: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -27,7 +28,9 @@ const Communities = () => {
 
       <ScrollView>
         <View className="flex-row items-center gap-2 mb-1 border-b-[#000] border-b-4 pb-4">
-          <View className="w-14 h-14 rounded-lg bg-[#7e8689]"></View>
+          <View className="w-14 h-14 rounded-lg items-center justify-center bg-[#7e8689]">
+            <UserGroupIcon color={'#d0d0d0'} size={35} />
+          </View>
           <View className="justify-center gap-1">
             <Text className="text-white">New community</Text>
           </View>

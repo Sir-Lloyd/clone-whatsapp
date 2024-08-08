@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import {
   ArrowLeftIcon,
   BellAlertIcon,
@@ -21,6 +21,8 @@ import {
   VideoCameraIcon,
 } from "react-native-heroicons/outline";
 
+const avatar = require('../../assets/img/avatar.png')
+
 const media: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const ProfileScreen = () => {
@@ -39,7 +41,9 @@ const ProfileScreen = () => {
         {/* banner */}
         <View className="p-2 gap-y-2 border-b-8 border-b-[#000]">
           <View className="items-center gap-1">
-            <View className="h-32 w-32 bg-[#21c162] rounded-full"></View>
+            <View className="h-32 w-32 bg-[#21c162] rounded-full">
+            <Image source={avatar} resizeMode="cover" className="h-full w-full rounded-full" />
+            </View>
             <Text className="text-white text-lg">John Doe</Text>
             <Text className="text-[#7e8689]">+263 77 789 4566</Text>
           </View>

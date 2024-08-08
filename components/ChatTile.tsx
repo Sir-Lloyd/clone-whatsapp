@@ -1,6 +1,8 @@
 import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
+const avatar = require('../assets/img/avatar.png')
+
 const ChatTile = () => {
   return (
     <TouchableOpacity
@@ -11,7 +13,7 @@ const ChatTile = () => {
         onPress={() => {}}
         className="items-center justify-center w-14 h-14 rounded-full bg-[#7e8689]"
       >
-        <Text>PB</Text>
+        <Image source={avatar} resizeMode="cover" className="h-full w-full rounded-full" />
       </TouchableOpacity>
       <View className="flex-1 justify-center gap-1">
         <Text className="text-white text-base font-semibold">Pookie Bear</Text>

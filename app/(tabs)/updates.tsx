@@ -1,5 +1,5 @@
 import UpdateTile from "@/components/UpdateTile";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import {
   CameraIcon,
   EllipsisVerticalIcon,
@@ -7,6 +7,8 @@ import {
 } from "react-native-heroicons/outline";
 
 const updates: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const avatar = require('../../assets/img/profile.jpeg')
 
 const Updates = () => {
   return (
@@ -32,7 +34,9 @@ const Updates = () => {
         <View>
           <Text>Status</Text>
           <View className="flex-row items-center gap-2 mb-1">
-            <View className="w-14 h-14 rounded-full bg-[#7e8689]"></View>
+            <View className="w-14 h-14 rounded-full bg-[#7e8689]">
+            <Image source={avatar} resizeMode="cover" className="h-full w-full rounded-full" />
+            </View>
             <View className="justify-center gap-1">
               <Text className="text-white">My status</Text>
               <Text className="text-sm text-[#7e8689]">
